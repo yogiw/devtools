@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight } from 'lucide-react'
+import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -44,6 +44,30 @@ function App() {
       href: '/tools/og-meta-seo-viewer',
       gradient: 'from-indigo-500 to-blue-500',
       hoverGradient: 'hover:from-indigo-400 hover:to-blue-400',
+    },
+    {
+      icon: <Lock className="w-8 h-8" />,
+      title: 'Password Generator',
+      description: 'Generate secure, random passwords with customizable options.',
+      href: '/tools/password-generator',
+      gradient: 'from-green-500 to-emerald-500',
+      hoverGradient: 'hover:from-green-400 hover:to-emerald-400',
+    },
+    {
+      icon: <Hash className="w-8 h-8" />,
+      title: 'UUID Generator',
+      description: 'Generate RFC 4122 compliant UUID v4 identifiers.',
+      href: '/tools/uuid-generator',
+      gradient: 'from-violet-500 to-purple-500',
+      hoverGradient: 'hover:from-violet-400 hover:to-purple-400',
+    },
+    {
+      icon: <Fingerprint className="w-8 h-8" />,
+      title: 'ULID Generator',
+      description: 'Generate ULID (Universally Unique Lexicographically Sortable Identifier) values.',
+      href: '/tools/ulid-generator',
+      gradient: 'from-amber-500 to-yellow-500',
+      hoverGradient: 'hover:from-amber-400 hover:to-yellow-400',
     },
   ]
 

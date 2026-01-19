@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsUuidGeneratorRouteImport } from './routes/tools/uuid-generator'
+import { Route as ToolsUlidGeneratorRouteImport } from './routes/tools/ulid-generator'
+import { Route as ToolsPasswordGeneratorRouteImport } from './routes/tools/password-generator'
 import { Route as ToolsOgMetaSeoViewerRouteImport } from './routes/tools/og-meta-seo-viewer'
 import { Route as ToolsJwtExtractRouteImport } from './routes/tools/jwt-extract'
 import { Route as ToolsJsonViewerRouteImport } from './routes/tools/json-viewer'
@@ -29,6 +32,21 @@ import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ss
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsUuidGeneratorRoute = ToolsUuidGeneratorRouteImport.update({
+  id: '/tools/uuid-generator',
+  path: '/tools/uuid-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsUlidGeneratorRoute = ToolsUlidGeneratorRouteImport.update({
+  id: '/tools/ulid-generator',
+  path: '/tools/ulid-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsPasswordGeneratorRoute = ToolsPasswordGeneratorRouteImport.update({
+  id: '/tools/password-generator',
+  path: '/tools/password-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsOgMetaSeoViewerRoute = ToolsOgMetaSeoViewerRouteImport.update({
@@ -115,6 +133,9 @@ export interface FileRoutesByFullPath {
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
+  '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
+  '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
+  '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
@@ -133,6 +154,9 @@ export interface FileRoutesByTo {
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
+  '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
+  '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
+  '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
@@ -152,6 +176,9 @@ export interface FileRoutesById {
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
+  '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
+  '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
+  '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
@@ -172,6 +199,9 @@ export interface FileRouteTypes {
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
+    | '/tools/password-generator'
+    | '/tools/ulid-generator'
+    | '/tools/uuid-generator'
     | '/demo/api/names'
     | '/demo/form/address'
     | '/demo/form/simple'
@@ -190,6 +220,9 @@ export interface FileRouteTypes {
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
+    | '/tools/password-generator'
+    | '/tools/ulid-generator'
+    | '/tools/uuid-generator'
     | '/demo/api/names'
     | '/demo/form/address'
     | '/demo/form/simple'
@@ -208,6 +241,9 @@ export interface FileRouteTypes {
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
+    | '/tools/password-generator'
+    | '/tools/ulid-generator'
+    | '/tools/uuid-generator'
     | '/demo/api/names'
     | '/demo/form/address'
     | '/demo/form/simple'
@@ -227,6 +263,9 @@ export interface RootRouteChildren {
   ToolsJsonViewerRoute: typeof ToolsJsonViewerRoute
   ToolsJwtExtractRoute: typeof ToolsJwtExtractRoute
   ToolsOgMetaSeoViewerRoute: typeof ToolsOgMetaSeoViewerRoute
+  ToolsPasswordGeneratorRoute: typeof ToolsPasswordGeneratorRoute
+  ToolsUlidGeneratorRoute: typeof ToolsUlidGeneratorRoute
+  ToolsUuidGeneratorRoute: typeof ToolsUuidGeneratorRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoFormAddressRoute: typeof DemoFormAddressRoute
   DemoFormSimpleRoute: typeof DemoFormSimpleRoute
@@ -245,6 +284,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/uuid-generator': {
+      id: '/tools/uuid-generator'
+      path: '/tools/uuid-generator'
+      fullPath: '/tools/uuid-generator'
+      preLoaderRoute: typeof ToolsUuidGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/ulid-generator': {
+      id: '/tools/ulid-generator'
+      path: '/tools/ulid-generator'
+      fullPath: '/tools/ulid-generator'
+      preLoaderRoute: typeof ToolsUlidGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/password-generator': {
+      id: '/tools/password-generator'
+      path: '/tools/password-generator'
+      fullPath: '/tools/password-generator'
+      preLoaderRoute: typeof ToolsPasswordGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/og-meta-seo-viewer': {
@@ -363,6 +423,9 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsJsonViewerRoute: ToolsJsonViewerRoute,
   ToolsJwtExtractRoute: ToolsJwtExtractRoute,
   ToolsOgMetaSeoViewerRoute: ToolsOgMetaSeoViewerRoute,
+  ToolsPasswordGeneratorRoute: ToolsPasswordGeneratorRoute,
+  ToolsUlidGeneratorRoute: ToolsUlidGeneratorRoute,
+  ToolsUuidGeneratorRoute: ToolsUuidGeneratorRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoFormAddressRoute: DemoFormAddressRoute,
   DemoFormSimpleRoute: DemoFormSimpleRoute,
