@@ -1,63 +1,145 @@
-Welcome to your new TanStack app! 
+# DevTools - Web Developer Utilities
 
-# Getting Started
+A collection of essential web development tools built with React, TanStack Router, and Tailwind CSS. All tools run entirely in your browser with a beautiful, modern UI.
 
-To run this application:
+## 🚀 Features
 
+### Available Tools
+
+1. **Base64 Encode & Decode**
+   - Encode text to Base64
+   - Decode Base64 to text
+   - URL-safe encoding/decoding
+   - Copy to clipboard functionality
+
+2. **JSON Viewer**
+   - Format and minify JSON
+   - Validate JSON syntax
+   - Collapsible JSON tree view
+   - Syntax highlighting
+
+3. **JWT Extract**
+   - Decode JWT tokens
+   - View header and payload
+   - Pretty-printed JSON output
+   - Extract token information
+
+4. **Image Converter**
+   - Convert images to WebP, PNG, or JPG
+   - Adjust quality and scale
+   - Drag and drop support
+   - Batch conversion with ZIP download
+   - Client-side processing (no uploads)
+
+5. **OG, Meta & SEO Viewer**
+   - Analyze Open Graph tags
+   - View meta tags and SEO information
+   - Twitter Card tags
+   - OG image preview
+   - Server-side fetching (no CORS issues)
+
+## 🛠️ Tech Stack
+
+- **Framework**: [TanStack Start](https://tanstack.com/start) (React + SSR)
+- **Routing**: [TanStack Router](https://tanstack.com/router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+
+## 📦 Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd devtools
+```
+
+2. Install dependencies:
 ```bash
 pnpm install
+```
+
+3. Start the development server:
+```bash
 pnpm dev
 ```
 
-# Building For Production
+The application will be available at `http://localhost:3000`
 
-To build this application for production:
+## 🏗️ Building for Production
+
+To build the application for production:
 
 ```bash
 pnpm build
 ```
 
-## Testing
+To preview the production build:
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+```bash
+pnpm preview
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── routes/
+│   ├── index.tsx              # Home page with tool menu
+│   ├── tools/
+│   │   ├── base64.tsx         # Base64 encode/decode tool
+│   │   ├── json-viewer.tsx    # JSON viewer and formatter
+│   │   ├── jwt-extract.tsx    # JWT token decoder
+│   │   ├── image-converter.tsx # Image conversion tool
+│   │   └── og-meta-seo-viewer.tsx # SEO tag analyzer
+│   └── __root.tsx             # Root layout with header
+├── components/
+│   ├── Header.tsx             # Navigation header
+│   ├── json-tree.tsx          # Collapsible JSON tree component
+│   └── ui/                    # shadcn/ui components
+└── lib/
+    └── seo-analyzer.ts         # Server-side SEO analysis API
+```
+
+## 🎨 UI Components
+
+This project uses [shadcn/ui](https://ui.shadcn.com/) for UI components. To add new components:
+
+```bash
+pnpm dlx shadcn@latest add <component-name>
+```
+
+For example:
+```bash
+pnpm dlx shadcn@latest add button
+```
+
+## 🧪 Testing
+
+This project uses [Vitest](https://vitest.dev/) for testing. Run tests with:
 
 ```bash
 pnpm test
 ```
 
-## Styling
+## 🔍 Linting & Formatting
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+This project uses [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) for code quality.
 
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
+Available scripts:
 ```bash
-pnpm lint
-pnpm format
-pnpm check
+pnpm lint      # Run ESLint
+pnpm format    # Format code with Prettier
+pnpm check     # Format and lint (prettier --write . && eslint --fix)
 ```
 
+## 🌐 Environment Variables
 
-## Shadcn
+This project uses [T3Env](https://env.t3.gg/) for type-safe environment variables.
 
-Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
-
-```bash
-pnpm dlx shadcn@latest add button
-```
-
-
-## T3Env
-
-- You can use T3Env to add type safety to your environment variables.
-- Add Environment variables to the `src/env.mjs` file.
-- Use the environment variables in your code.
-
-### Usage
+1. Add environment variables to `src/env.mjs`
+2. Use them in your code:
 
 ```ts
 import { env } from "@/env";
@@ -65,264 +147,89 @@ import { env } from "@/env";
 console.log(env.VITE_APP_TITLE);
 ```
 
+## 🛣️ Routing
 
+This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are automatically generated from files in the `src/routes` directory.
 
+### Adding a New Route
 
-
-
-## Routing
-This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add another a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+Simply create a new file in `src/routes`:
 
 ```tsx
-import { Link } from "@tanstack/react-router";
-```
+import { createFileRoute } from '@tanstack/react-router'
 
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you use the `<Outlet />` component.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-
-import { Link } from "@tanstack/react-router";
-
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
+export const Route = createFileRoute('/my-route')({
+  component: MyComponent,
 })
 ```
 
-The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
+### Navigation
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
+Use the `Link` component for navigation:
 
 ```tsx
-const peopleRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/people",
-  loader: async () => {
-    const response = await fetch("https://swapi.dev/api/people");
-    return response.json() as Promise<{
-      results: {
-        name: string;
-      }[];
-    }>;
-  },
-  component: () => {
-    const data = peopleRoute.useLoaderData();
-    return (
-      <ul>
-        {data.results.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    );
-  },
-});
+import { Link } from '@tanstack/react-router'
+
+<Link to="/tools/base64">Base64 Tool</Link>
 ```
 
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+## 🎯 Usage Examples
 
-### React-Query
+### Base64 Encode/Decode
+1. Navigate to `/tools/base64`
+2. Enter text in the input field
+3. Click "Encode" or "Decode"
+4. Copy the result to clipboard
 
-React-Query is an excellent addition or alternative to route loading and integrating it into you application is a breeze.
+### JSON Viewer
+1. Navigate to `/tools/json-viewer`
+2. Paste your JSON in the input field
+3. Click "Format" to prettify or "Minify" to compress
+4. View the collapsible tree structure on the right
 
-First add your dependencies:
+### JWT Extract
+1. Navigate to `/tools/jwt-extract`
+2. Paste your JWT token
+3. View the decoded header and payload
 
-```bash
-pnpm add @tanstack/react-query @tanstack/react-query-devtools
-```
+### Image Converter
+1. Navigate to `/tools/image-converter`
+2. Drag and drop images or click to select
+3. Adjust quality and scale settings
+4. Choose output format (WebP, PNG, JPG)
+5. Download individual images or as a ZIP
 
-Next we'll need to create a query client and provider. We recommend putting those in `main.tsx`.
+### SEO Viewer
+1. Navigate to `/tools/og-meta-seo-viewer`
+2. Enter a URL (with or without protocol)
+3. Click "Analyze"
+4. View all meta tags, OG tags, and SEO information
 
-```tsx
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+## 🚀 Deployment
 
-// ...
+This project can be deployed to any platform that supports Node.js:
 
-const queryClient = new QueryClient();
+- **Vercel**: Connect your repository and deploy
+- **Netlify**: Use the build command `pnpm build`
+- **Cloudflare Pages**: Configure build settings
+- **Self-hosted**: Run `pnpm build` and serve the output
 
-// ...
+## 📝 License
 
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
+This project is open source and available under the MIT License.
 
-  root.render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
-}
-```
+## 🤝 Contributing
 
-You can also add TanStack Query Devtools to the root route (optional).
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-```tsx
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+## 📚 Learn More
 
-const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <ReactQueryDevtools buttonPosition="top-right" />
-      <TanStackRouterDevtools />
-    </>
-  ),
-});
-```
+- [TanStack Documentation](https://tanstack.com)
+- [TanStack Router](https://tanstack.com/router)
+- [TanStack Start](https://tanstack.com/start)
+- [Tailwind CSS](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com)
 
-Now you can use `useQuery` to fetch your data.
+---
 
-```tsx
-import { useQuery } from "@tanstack/react-query";
-
-import "./App.css";
-
-function App() {
-  const { data } = useQuery({
-    queryKey: ["people"],
-    queryFn: () =>
-      fetch("https://swapi.dev/api/people")
-        .then((res) => res.json())
-        .then((data) => data.results as { name: string }[]),
-    initialData: [],
-  });
-
-  return (
-    <div>
-      <ul>
-        {data.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default App;
-```
-
-You can find out everything you need to know on how to use React-Query in the [React-Query documentation](https://tanstack.com/query/latest/docs/framework/react/overview).
-
-## State Management
-
-Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
-
-First you need to add TanStack Store as a dependency:
-
-```bash
-pnpm add @tanstack/store
-```
-
-Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
-
-```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store } from "@tanstack/store";
-import "./App.css";
-
-const countStore = new Store(0);
-
-function App() {
-  const count = useStore(countStore);
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-    </div>
-  );
-}
-
-export default App;
-```
-
-One of the many nice features of TanStack Store is the ability to derive state from other state. That derived state will update when the base state updates.
-
-Let's check this out by doubling the count using derived state.
-
-```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store, Derived } from "@tanstack/store";
-import "./App.css";
-
-const countStore = new Store(0);
-
-const doubledStore = new Derived({
-  fn: () => countStore.state * 2,
-  deps: [countStore],
-});
-doubledStore.mount();
-
-function App() {
-  const count = useStore(countStore);
-  const doubledCount = useStore(doubledStore);
-
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-      <div>Doubled - {doubledCount}</div>
-    </div>
-  );
-}
-
-export default App;
-```
-
-We use the `Derived` class to create a new store that is derived from another store. The `Derived` class has a `mount` method that will start the derived store updating.
-
-Once we've created the derived store we can use it in the `App` component just like we would any other store using the `useStore` hook.
-
-You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+Built with ❤️ using TanStack Start
