@@ -116,10 +116,10 @@ function App() {
             >
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${tool.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-              
+
               {/* Shine effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-              
+
               <div className="relative z-10">
                 <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${tool.gradient} mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                   <div className="text-white">{tool.icon}</div>
