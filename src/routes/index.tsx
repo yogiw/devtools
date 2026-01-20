@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2 } from 'lucide-react'
+import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2, Scale } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -76,6 +76,14 @@ function App() {
       href: '/tools/ulid-generator',
       gradient: 'from-amber-500 to-yellow-500',
       hoverGradient: 'hover:from-amber-400 hover:to-yellow-400',
+    },
+    {
+      icon: <Scale className="w-8 h-8" />,
+      title: 'Ratio Calculatur',
+      description: 'Keep aspect ratio while resizing (e.g., 1920×1080 → 1280×720).',
+      href: '/tools/ratio-calculatur',
+      gradient: 'from-fuchsia-500 to-rose-500',
+      hoverGradient: 'hover:from-fuchsia-400 hover:to-rose-400',
     },
   ]
 

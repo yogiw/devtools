@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsUuidGeneratorRouteImport } from './routes/tools/uuid-generator'
 import { Route as ToolsUlidGeneratorRouteImport } from './routes/tools/ulid-generator'
+import { Route as ToolsRatioCalculaturRouteImport } from './routes/tools/ratio-calculatur'
 import { Route as ToolsPasswordGeneratorRouteImport } from './routes/tools/password-generator'
 import { Route as ToolsOgMetaSeoViewerRouteImport } from './routes/tools/og-meta-seo-viewer'
 import { Route as ToolsJwtExtractRouteImport } from './routes/tools/jwt-extract'
@@ -43,6 +44,11 @@ const ToolsUuidGeneratorRoute = ToolsUuidGeneratorRouteImport.update({
 const ToolsUlidGeneratorRoute = ToolsUlidGeneratorRouteImport.update({
   id: '/tools/ulid-generator',
   path: '/tools/ulid-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRatioCalculaturRoute = ToolsRatioCalculaturRouteImport.update({
+  id: '/tools/ratio-calculatur',
+  path: '/tools/ratio-calculatur',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsPasswordGeneratorRoute = ToolsPasswordGeneratorRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
   '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
+  '/tools/ratio-calculatur': typeof ToolsRatioCalculaturRoute
   '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
   '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
   '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
+  '/tools/ratio-calculatur': typeof ToolsRatioCalculaturRoute
   '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
   '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
   '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
+  '/tools/ratio-calculatur': typeof ToolsRatioCalculaturRoute
   '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
   '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
     | '/tools/password-generator'
+    | '/tools/ratio-calculatur'
     | '/tools/ulid-generator'
     | '/tools/uuid-generator'
     | '/demo/api/names'
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
     | '/tools/password-generator'
+    | '/tools/ratio-calculatur'
     | '/tools/ulid-generator'
     | '/tools/uuid-generator'
     | '/demo/api/names'
@@ -254,6 +265,7 @@ export interface FileRouteTypes {
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
     | '/tools/password-generator'
+    | '/tools/ratio-calculatur'
     | '/tools/ulid-generator'
     | '/tools/uuid-generator'
     | '/demo/api/names'
@@ -277,6 +289,7 @@ export interface RootRouteChildren {
   ToolsJwtExtractRoute: typeof ToolsJwtExtractRoute
   ToolsOgMetaSeoViewerRoute: typeof ToolsOgMetaSeoViewerRoute
   ToolsPasswordGeneratorRoute: typeof ToolsPasswordGeneratorRoute
+  ToolsRatioCalculaturRoute: typeof ToolsRatioCalculaturRoute
   ToolsUlidGeneratorRoute: typeof ToolsUlidGeneratorRoute
   ToolsUuidGeneratorRoute: typeof ToolsUuidGeneratorRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -311,6 +324,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/ulid-generator'
       fullPath: '/tools/ulid-generator'
       preLoaderRoute: typeof ToolsUlidGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/ratio-calculatur': {
+      id: '/tools/ratio-calculatur'
+      path: '/tools/ratio-calculatur'
+      fullPath: '/tools/ratio-calculatur'
+      preLoaderRoute: typeof ToolsRatioCalculaturRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/password-generator': {
@@ -445,6 +465,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsJwtExtractRoute: ToolsJwtExtractRoute,
   ToolsOgMetaSeoViewerRoute: ToolsOgMetaSeoViewerRoute,
   ToolsPasswordGeneratorRoute: ToolsPasswordGeneratorRoute,
+  ToolsRatioCalculaturRoute: ToolsRatioCalculaturRoute,
   ToolsUlidGeneratorRoute: ToolsUlidGeneratorRoute,
   ToolsUuidGeneratorRoute: ToolsUuidGeneratorRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,

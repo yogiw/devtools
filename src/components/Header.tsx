@@ -60,6 +60,15 @@ export default function Header() {
           >
             SEO Viewer
           </Link>
+          <Link
+            to="/tools/ratio-calculatur"
+            className="text-white hover:text-cyan-400 transition-colors font-medium text-sm md:text-base"
+            activeProps={{
+              className: 'text-cyan-400',
+            }}
+          >
+            Ratio Calculatur
+          </Link>
         </div>
       </nav>
     </header>
