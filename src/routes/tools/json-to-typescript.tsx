@@ -238,7 +238,10 @@ function convertToTypeScript(
         return name
     }
 
-    function getType(value: unknown, key: string = ''): string {
+    function getType(value: unknown, key: string = '', indent: number = 0): string {
+        const indentStr = '  '.repeat(indent)
+        const nextIndent = indent + 1
+
         if (value === null) {
             return 'null'
         }
@@ -247,7 +250,7 @@ function convertToTypeScript(
             if (value.length === 0) {
                 return 'unknown[]'
             }
-            const itemType = getType(value[0], key)
+            const itemType = getType(value[0], key, indent)
             return `${itemType}[]`
         }
 
@@ -287,10 +290,10 @@ function convertToTypeScript(
                             allInterfaces.push(nestedInterface)
                             properties.push(`  ${sanitizeName(propKey)}: ${nestedName}[]`)
                         } else {
-                            properties.push(`  ${sanitizeName(propKey)}: ${getType(propValue, propKey)}`)
+                            properties.push(`  ${sanitizeName(propKey)}: ${getType(propValue, propKey, indent)}`)
                         }
                     } else {
-                        properties.push(`  ${sanitizeName(propKey)}: ${getType(propValue, propKey)}`)
+                        properties.push(`  ${sanitizeName(propKey)}: ${getType(propValue, propKey, indent)}`)
                     }
                 }
 
@@ -301,9 +304,24 @@ function convertToTypeScript(
                 // Single type mode - inline object type
                 const properties: string[] = []
                 for (const [propKey, propValue] of Object.entries(obj)) {
-                    properties.push(`  ${sanitizeName(propKey)}: ${getType(propValue, propKey)}`)
+                    const propType = getType(propValue, propKey, nextIndent)
+                    // If propType is a nested object (starts with {), format it properly
+                    if (propType.startsWith('{')) {
+                        const lines = propType.split('\n')
+                        // Remove the first line (opening brace) and last line (closing brace)
+                        const middleLines = lines.slice(1, -1)
+                        // Add additional indentation to middle lines (they're already indented from nextIndent,
+                        // but we need to add the current indent level too)
+                        const indentedMiddleLines = middleLines.map((line) => `${indentStr}  ${line}`)
+                        // The opening brace goes on the same line as the property name
+                        // The closing brace needs to be at the current indent level
+                        const formattedType = `{\n${indentedMiddleLines.join('\n')}\n${indentStr}  }`
+                        properties.push(`${indentStr}  ${sanitizeName(propKey)}: ${formattedType}`)
+                    } else {
+                        properties.push(`${indentStr}  ${sanitizeName(propKey)}: ${propType}`)
+                    }
                 }
-                return `{\n${properties.join('\n')}\n}`
+                return `{\n${properties.join('\n')}\n${indentStr}}`
             }
         }
 
@@ -345,10 +363,10 @@ function convertToTypeScript(
                     allInterfaces.push(nestedInterface)
                     properties.push(`  ${sanitizeName(key)}: ${nestedName}[]`)
                 } else {
-                    properties.push(`  ${sanitizeName(key)}: ${getType(value, key)}`)
+                    properties.push(`  ${sanitizeName(key)}: ${getType(value, key, 0)}`)
                 }
             } else {
-                properties.push(`  ${sanitizeName(key)}: ${getType(value, key)}`)
+                properties.push(`  ${sanitizeName(key)}: ${getType(value, key, 0)}`)
             }
         }
 
@@ -360,13 +378,13 @@ function convertToTypeScript(
 
     if (useMultipleInterfaces) {
         // Get the root type (this will create the root interface and add it to allInterfaces)
-        getType(data, finalRootName)
+        getType(data, finalRootName, 0)
 
         // Remove duplicates while preserving order
         const uniqueInterfaces = Array.from(new Set(allInterfaces))
         return uniqueInterfaces.join('\n\n')
     } else {
-        const rootType = getType(data, rootName)
+        const rootType = getType(data, rootName, 0)
         return `type ${finalRootName} = ${rootType}`
     }
 }
