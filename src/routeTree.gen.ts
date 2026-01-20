@@ -16,6 +16,7 @@ import { Route as ToolsPasswordGeneratorRouteImport } from './routes/tools/passw
 import { Route as ToolsOgMetaSeoViewerRouteImport } from './routes/tools/og-meta-seo-viewer'
 import { Route as ToolsJwtExtractRouteImport } from './routes/tools/jwt-extract'
 import { Route as ToolsJsonViewerRouteImport } from './routes/tools/json-viewer'
+import { Route as ToolsJsonToTypescriptRouteImport } from './routes/tools/json-to-typescript'
 import { Route as ToolsImageConverterRouteImport } from './routes/tools/image-converter'
 import { Route as ToolsBase64RouteImport } from './routes/tools/base64'
 import { Route as DemoStoreRouteImport } from './routes/demo/store'
@@ -62,6 +63,11 @@ const ToolsJwtExtractRoute = ToolsJwtExtractRouteImport.update({
 const ToolsJsonViewerRoute = ToolsJsonViewerRouteImport.update({
   id: '/tools/json-viewer',
   path: '/tools/json-viewer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsJsonToTypescriptRoute = ToolsJsonToTypescriptRouteImport.update({
+  id: '/tools/json-to-typescript',
+  path: '/tools/json-to-typescript',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsImageConverterRoute = ToolsImageConverterRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/demo/store': typeof DemoStoreRoute
   '/tools/base64': typeof ToolsBase64Route
   '/tools/image-converter': typeof ToolsImageConverterRoute
+  '/tools/json-to-typescript': typeof ToolsJsonToTypescriptRoute
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/demo/store': typeof DemoStoreRoute
   '/tools/base64': typeof ToolsBase64Route
   '/tools/image-converter': typeof ToolsImageConverterRoute
+  '/tools/json-to-typescript': typeof ToolsJsonToTypescriptRoute
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/demo/store': typeof DemoStoreRoute
   '/tools/base64': typeof ToolsBase64Route
   '/tools/image-converter': typeof ToolsImageConverterRoute
+  '/tools/json-to-typescript': typeof ToolsJsonToTypescriptRoute
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/demo/store'
     | '/tools/base64'
     | '/tools/image-converter'
+    | '/tools/json-to-typescript'
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/demo/store'
     | '/tools/base64'
     | '/tools/image-converter'
+    | '/tools/json-to-typescript'
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/demo/store'
     | '/tools/base64'
     | '/tools/image-converter'
+    | '/tools/json-to-typescript'
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
     | '/tools/og-meta-seo-viewer'
@@ -260,6 +272,7 @@ export interface RootRouteChildren {
   DemoStoreRoute: typeof DemoStoreRoute
   ToolsBase64Route: typeof ToolsBase64Route
   ToolsImageConverterRoute: typeof ToolsImageConverterRoute
+  ToolsJsonToTypescriptRoute: typeof ToolsJsonToTypescriptRoute
   ToolsJsonViewerRoute: typeof ToolsJsonViewerRoute
   ToolsJwtExtractRoute: typeof ToolsJwtExtractRoute
   ToolsOgMetaSeoViewerRoute: typeof ToolsOgMetaSeoViewerRoute
@@ -326,6 +339,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/json-viewer'
       fullPath: '/tools/json-viewer'
       preLoaderRoute: typeof ToolsJsonViewerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/json-to-typescript': {
+      id: '/tools/json-to-typescript'
+      path: '/tools/json-to-typescript'
+      fullPath: '/tools/json-to-typescript'
+      preLoaderRoute: typeof ToolsJsonToTypescriptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/image-converter': {
@@ -420,6 +440,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoStoreRoute: DemoStoreRoute,
   ToolsBase64Route: ToolsBase64Route,
   ToolsImageConverterRoute: ToolsImageConverterRoute,
+  ToolsJsonToTypescriptRoute: ToolsJsonToTypescriptRoute,
   ToolsJsonViewerRoute: ToolsJsonViewerRoute,
   ToolsJwtExtractRoute: ToolsJwtExtractRoute,
   ToolsOgMetaSeoViewerRoute: ToolsOgMetaSeoViewerRoute,

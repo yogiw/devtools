@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint } from 'lucide-react'
+import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2 } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -20,6 +20,14 @@ function App() {
       href: '/tools/json-viewer',
       gradient: 'from-purple-500 to-pink-500',
       hoverGradient: 'hover:from-purple-400 hover:to-pink-400',
+    },
+    {
+      icon: <Code2 className="w-8 h-8" />,
+      title: 'JSON to TypeScript',
+      description: 'Convert JSON objects to TypeScript types or interfaces.',
+      href: '/tools/json-to-typescript',
+      gradient: 'from-amber-500 to-orange-500',
+      hoverGradient: 'hover:from-amber-400 hover:to-orange-400',
     },
     {
       icon: <Key className="w-8 h-8" />,
