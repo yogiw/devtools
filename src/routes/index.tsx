@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2, Scale } from 'lucide-react'
+import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2, Scale, Phone } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -84,6 +84,14 @@ function App() {
       href: '/tools/ratio-calculatur',
       gradient: 'from-fuchsia-500 to-rose-500',
       hoverGradient: 'hover:from-fuchsia-400 hover:to-rose-400',
+    },
+    {
+      icon: <Phone className="w-8 h-8" />,
+      title: 'Shopify Phone Generator',
+      description: 'Random dummy phone numbers in E.164 format that pass Shopify validation for various countries.',
+      href: '/tools/shopify-phone-generator',
+      gradient: 'from-teal-500 to-cyan-500',
+      hoverGradient: 'hover:from-teal-400 hover:to-cyan-400',
     },
   ]
 

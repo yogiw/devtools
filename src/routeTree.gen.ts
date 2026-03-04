@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsUuidGeneratorRouteImport } from './routes/tools/uuid-generator'
 import { Route as ToolsUlidGeneratorRouteImport } from './routes/tools/ulid-generator'
+import { Route as ToolsShopifyPhoneGeneratorRouteImport } from './routes/tools/shopify-phone-generator'
 import { Route as ToolsRatioCalculaturRouteImport } from './routes/tools/ratio-calculatur'
 import { Route as ToolsPasswordGeneratorRouteImport } from './routes/tools/password-generator'
 import { Route as ToolsOgMetaSeoViewerRouteImport } from './routes/tools/og-meta-seo-viewer'
@@ -46,6 +47,12 @@ const ToolsUlidGeneratorRoute = ToolsUlidGeneratorRouteImport.update({
   path: '/tools/ulid-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsShopifyPhoneGeneratorRoute =
+  ToolsShopifyPhoneGeneratorRouteImport.update({
+    id: '/tools/shopify-phone-generator',
+    path: '/tools/shopify-phone-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ToolsRatioCalculaturRoute = ToolsRatioCalculaturRouteImport.update({
   id: '/tools/ratio-calculatur',
   path: '/tools/ratio-calculatur',
@@ -148,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
   '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
   '/tools/ratio-calculatur': typeof ToolsRatioCalculaturRoute
+  '/tools/shopify-phone-generator': typeof ToolsShopifyPhoneGeneratorRoute
   '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
   '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -171,6 +179,7 @@ export interface FileRoutesByTo {
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
   '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
   '/tools/ratio-calculatur': typeof ToolsRatioCalculaturRoute
+  '/tools/shopify-phone-generator': typeof ToolsShopifyPhoneGeneratorRoute
   '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
   '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -195,6 +204,7 @@ export interface FileRoutesById {
   '/tools/og-meta-seo-viewer': typeof ToolsOgMetaSeoViewerRoute
   '/tools/password-generator': typeof ToolsPasswordGeneratorRoute
   '/tools/ratio-calculatur': typeof ToolsRatioCalculaturRoute
+  '/tools/shopify-phone-generator': typeof ToolsShopifyPhoneGeneratorRoute
   '/tools/ulid-generator': typeof ToolsUlidGeneratorRoute
   '/tools/uuid-generator': typeof ToolsUuidGeneratorRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -220,6 +230,7 @@ export interface FileRouteTypes {
     | '/tools/og-meta-seo-viewer'
     | '/tools/password-generator'
     | '/tools/ratio-calculatur'
+    | '/tools/shopify-phone-generator'
     | '/tools/ulid-generator'
     | '/tools/uuid-generator'
     | '/demo/api/names'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/tools/og-meta-seo-viewer'
     | '/tools/password-generator'
     | '/tools/ratio-calculatur'
+    | '/tools/shopify-phone-generator'
     | '/tools/ulid-generator'
     | '/tools/uuid-generator'
     | '/demo/api/names'
@@ -266,6 +278,7 @@ export interface FileRouteTypes {
     | '/tools/og-meta-seo-viewer'
     | '/tools/password-generator'
     | '/tools/ratio-calculatur'
+    | '/tools/shopify-phone-generator'
     | '/tools/ulid-generator'
     | '/tools/uuid-generator'
     | '/demo/api/names'
@@ -290,6 +303,7 @@ export interface RootRouteChildren {
   ToolsOgMetaSeoViewerRoute: typeof ToolsOgMetaSeoViewerRoute
   ToolsPasswordGeneratorRoute: typeof ToolsPasswordGeneratorRoute
   ToolsRatioCalculaturRoute: typeof ToolsRatioCalculaturRoute
+  ToolsShopifyPhoneGeneratorRoute: typeof ToolsShopifyPhoneGeneratorRoute
   ToolsUlidGeneratorRoute: typeof ToolsUlidGeneratorRoute
   ToolsUuidGeneratorRoute: typeof ToolsUuidGeneratorRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -324,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/ulid-generator'
       fullPath: '/tools/ulid-generator'
       preLoaderRoute: typeof ToolsUlidGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/shopify-phone-generator': {
+      id: '/tools/shopify-phone-generator'
+      path: '/tools/shopify-phone-generator'
+      fullPath: '/tools/shopify-phone-generator'
+      preLoaderRoute: typeof ToolsShopifyPhoneGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/ratio-calculatur': {
@@ -466,6 +487,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsOgMetaSeoViewerRoute: ToolsOgMetaSeoViewerRoute,
   ToolsPasswordGeneratorRoute: ToolsPasswordGeneratorRoute,
   ToolsRatioCalculaturRoute: ToolsRatioCalculaturRoute,
+  ToolsShopifyPhoneGeneratorRoute: ToolsShopifyPhoneGeneratorRoute,
   ToolsUlidGeneratorRoute: ToolsUlidGeneratorRoute,
   ToolsUuidGeneratorRoute: ToolsUuidGeneratorRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,

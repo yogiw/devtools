@@ -69,6 +69,15 @@ export default function Header() {
           >
             Ratio Calculatur
           </Link>
+          <Link
+            to="/tools/shopify-phone-generator"
+            className="text-white hover:text-cyan-400 transition-colors font-medium text-sm md:text-base"
+            activeProps={{
+              className: 'text-cyan-400',
+            }}
+          >
+            Phone Generator
+          </Link>
         </div>
       </nav>
     </header>
