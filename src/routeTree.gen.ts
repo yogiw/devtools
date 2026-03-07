@@ -19,6 +19,7 @@ import { Route as ToolsOgMetaSeoViewerRouteImport } from './routes/tools/og-meta
 import { Route as ToolsJwtExtractRouteImport } from './routes/tools/jwt-extract'
 import { Route as ToolsJsonViewerRouteImport } from './routes/tools/json-viewer'
 import { Route as ToolsJsonToTypescriptRouteImport } from './routes/tools/json-to-typescript'
+import { Route as ToolsJsonToOpenrouterOutputRouteImport } from './routes/tools/json-to-openrouter-output'
 import { Route as ToolsImageConverterRouteImport } from './routes/tools/image-converter'
 import { Route as ToolsBase64RouteImport } from './routes/tools/base64'
 import { Route as DemoStoreRouteImport } from './routes/demo/store'
@@ -83,6 +84,12 @@ const ToolsJsonToTypescriptRoute = ToolsJsonToTypescriptRouteImport.update({
   path: '/tools/json-to-typescript',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsJsonToOpenrouterOutputRoute =
+  ToolsJsonToOpenrouterOutputRouteImport.update({
+    id: '/tools/json-to-openrouter-output',
+    path: '/tools/json-to-openrouter-output',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ToolsImageConverterRoute = ToolsImageConverterRouteImport.update({
   id: '/tools/image-converter',
   path: '/tools/image-converter',
@@ -149,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/demo/store': typeof DemoStoreRoute
   '/tools/base64': typeof ToolsBase64Route
   '/tools/image-converter': typeof ToolsImageConverterRoute
+  '/tools/json-to-openrouter-output': typeof ToolsJsonToOpenrouterOutputRoute
   '/tools/json-to-typescript': typeof ToolsJsonToTypescriptRoute
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
@@ -173,6 +181,7 @@ export interface FileRoutesByTo {
   '/demo/store': typeof DemoStoreRoute
   '/tools/base64': typeof ToolsBase64Route
   '/tools/image-converter': typeof ToolsImageConverterRoute
+  '/tools/json-to-openrouter-output': typeof ToolsJsonToOpenrouterOutputRoute
   '/tools/json-to-typescript': typeof ToolsJsonToTypescriptRoute
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
@@ -198,6 +207,7 @@ export interface FileRoutesById {
   '/demo/store': typeof DemoStoreRoute
   '/tools/base64': typeof ToolsBase64Route
   '/tools/image-converter': typeof ToolsImageConverterRoute
+  '/tools/json-to-openrouter-output': typeof ToolsJsonToOpenrouterOutputRoute
   '/tools/json-to-typescript': typeof ToolsJsonToTypescriptRoute
   '/tools/json-viewer': typeof ToolsJsonViewerRoute
   '/tools/jwt-extract': typeof ToolsJwtExtractRoute
@@ -224,6 +234,7 @@ export interface FileRouteTypes {
     | '/demo/store'
     | '/tools/base64'
     | '/tools/image-converter'
+    | '/tools/json-to-openrouter-output'
     | '/tools/json-to-typescript'
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
@@ -248,6 +259,7 @@ export interface FileRouteTypes {
     | '/demo/store'
     | '/tools/base64'
     | '/tools/image-converter'
+    | '/tools/json-to-openrouter-output'
     | '/tools/json-to-typescript'
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
@@ -272,6 +284,7 @@ export interface FileRouteTypes {
     | '/demo/store'
     | '/tools/base64'
     | '/tools/image-converter'
+    | '/tools/json-to-openrouter-output'
     | '/tools/json-to-typescript'
     | '/tools/json-viewer'
     | '/tools/jwt-extract'
@@ -297,6 +310,7 @@ export interface RootRouteChildren {
   DemoStoreRoute: typeof DemoStoreRoute
   ToolsBase64Route: typeof ToolsBase64Route
   ToolsImageConverterRoute: typeof ToolsImageConverterRoute
+  ToolsJsonToOpenrouterOutputRoute: typeof ToolsJsonToOpenrouterOutputRoute
   ToolsJsonToTypescriptRoute: typeof ToolsJsonToTypescriptRoute
   ToolsJsonViewerRoute: typeof ToolsJsonViewerRoute
   ToolsJwtExtractRoute: typeof ToolsJwtExtractRoute
@@ -387,6 +401,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/json-to-typescript'
       fullPath: '/tools/json-to-typescript'
       preLoaderRoute: typeof ToolsJsonToTypescriptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/json-to-openrouter-output': {
+      id: '/tools/json-to-openrouter-output'
+      path: '/tools/json-to-openrouter-output'
+      fullPath: '/tools/json-to-openrouter-output'
+      preLoaderRoute: typeof ToolsJsonToOpenrouterOutputRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/image-converter': {
@@ -481,6 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoStoreRoute: DemoStoreRoute,
   ToolsBase64Route: ToolsBase64Route,
   ToolsImageConverterRoute: ToolsImageConverterRoute,
+  ToolsJsonToOpenrouterOutputRoute: ToolsJsonToOpenrouterOutputRoute,
   ToolsJsonToTypescriptRoute: ToolsJsonToTypescriptRoute,
   ToolsJsonViewerRoute: ToolsJsonViewerRoute,
   ToolsJwtExtractRoute: ToolsJwtExtractRoute,

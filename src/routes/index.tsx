@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2, Scale, Phone } from 'lucide-react'
+import { Code, FileJson, Key, Image as ImageIcon, Eye, ArrowRight, Lock, Hash, Fingerprint, Code2, Scale, Phone, Webhook } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -28,6 +28,14 @@ function App() {
       href: '/tools/json-to-typescript',
       gradient: 'from-amber-500 to-orange-500',
       hoverGradient: 'hover:from-amber-400 hover:to-orange-400',
+    },
+    {
+      icon: <Webhook className="w-8 h-8" />,
+      title: 'JSON to OpenRouter Output',
+      description: 'Convert JSON Schema or sample objects to OpenRouter API response_format.',
+      href: '/tools/json-to-openrouter-output',
+      gradient: 'from-sky-500 to-indigo-500',
+      hoverGradient: 'hover:from-sky-400 hover:to-indigo-400',
     },
     {
       icon: <Key className="w-8 h-8" />,
